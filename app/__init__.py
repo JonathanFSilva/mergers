@@ -17,5 +17,9 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     db.init_app(app)
 
-    return app
+    # rota temporária
+    @app.route('/')
+    def hello_world():
+        return 'Hello World!'
 
+    return app
