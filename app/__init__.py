@@ -4,12 +4,14 @@
 # importações de terceiros
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 # importações locais
 from config import app_config
 
 # inicialização da variável do banco de dados (O.R.M)
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
@@ -17,9 +19,8 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     db.init_app(app)
 
-    # rota temporária
-    @app.route('/')
-    def hello_world():
-        return 'Hello World!'
+    login_manager.init_app()
+    login_manager.login_message = "Você deve entrar antes de acessar esta página."
+    login_manager.login_view = "auth.login"
 
     return app
