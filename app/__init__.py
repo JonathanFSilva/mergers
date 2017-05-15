@@ -20,7 +20,7 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     db.init_app(app)
 
-    login_manager.init_app()
+    login_manager.init_app(app)
     login_manager.login_message = "Você deve entrar antes de acessar esta página."
     login_manager.login_view = "auth.login"
 
