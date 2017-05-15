@@ -26,8 +26,8 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-          <li><a href="#">Cadastrar</a></li>
-          <li><a href="#">Entrar</a></li>
+          <li><a href="{{ url_for('auth.cadastrar') }}">Cadastrar</a></li>
+          <li><a href="{{ url_for('auth.login') }}">Entrar</a></li>
           </ul>
       </div>
     </div>
@@ -44,9 +44,9 @@
                     <ul class="list-inline">
                         <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
                         <li class="footer-menu-divider">⋅</li>
-                        <li><a href="#">Cadastrar</a></li>
+                        <li><a href="{{ url_for('auth.cadastrar') }}">Cadastrar</a></li>
                         <li class="footer-menu-divider">⋅</li>
-                        <li><a href="#">Entrar</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">Entrar</a></li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &#169; Estrutura Societária - IHC 2017 </p>
                 </div>
