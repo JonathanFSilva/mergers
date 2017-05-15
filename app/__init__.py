@@ -27,4 +27,13 @@ def create_app(config_name):
     migrate = Migrate(app, db)
     from app import models
 
+    from .admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint, url_prefix='/admin')
+
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_bluprint)
+
+    from .home import home as home_bluprint
+    app.register_blueprint(home_blueprint)
+
     return app
