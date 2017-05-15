@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # app/auth/views.py
 
 from flask import flash, redirect, render_template, url_for
@@ -7,6 +8,10 @@ from . import auth
 from forms import LoginForm, RegistrationForm
 from .. import db
 from ..models import Employee
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 @auth.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
