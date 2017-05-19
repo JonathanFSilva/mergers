@@ -6,31 +6,29 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login_manager
 
-class Employee(UserMixin, db.Model):
+class Empresa(UserMixin, db.Model):
     """
-    Create an Employee table
+    cria a tabela Empresa 
     """
 
-    # Ensures table will be named in plural and not in singular
-    # as is the name of the model
-    __tablename__ = 'employees'
+    # Garante que o nome da tabela estará no plural
+    # assim como no modelo
+    __tablename__ = 'empresas'
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(60), index=True, unique=True)
     username = db.Column(db.String(60), index=True, unique=True)
-    first_name = db.Column(db.String(60), index=True)
-    last_name = db.Column(db.String(60), index=True)
+    razao_social = db.Column(db.String(60), index=True, unique=True)
+    cnpj = db.Column(db.String(18), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    department_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):
         """
-        Prevent pasword from being accessed
+        previne acesso indesejado à senha 
         """
-        raise AttributeError('password is not a readable attribute.')
+        raise AttributeError('A senha não é um atributo legível.')
 
     @password.setter
     def password(self, password):
@@ -46,40 +44,26 @@ class Employee(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<Employee: {}>'.format(self.username)
+        return '<Empresa: {}>'.format(self.razao_social)
 
 # Set up user_loader
 @login_manager.user_loader
 def load_user(user_id):
-    return Employee.query.get(int(user_id))
+    return Empresa.query.get(int(user_id))
 
-class Department(db.Model):
+class Investimento(db.Model):
     """
     Create a Department table
     """
 
-    __tablename__ = 'departments'
+    __tablename__ = 'investimentos'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), unique=True)
-    description = db.Column(db.String(200))
-    employees = db.relationship('Employee', backref='department', lazy='dynamic')
+    id_empresa = db.Column(db.Integer, db.ForeignKey('empresa.id'))
+    tipo_invest = db.Column(db.String(60), unique=True)
+    val_invest = db.Column(db.Float(7))
+    data_invest = db.Column(db.DateTime)
+    investimento = db.relationship('Investimento', backref='investimento', lazy='dynamic')
 
     def __repr__(self):
-        return '<Department: {}>'.format(self.name)
-
-class Role(db.Model):
-    """
-    Create a Role table
-    """
-
-    __tablename__ = 'roles'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), unique=True)
-    description = db.Column(db.String(200))
-    employees = db.relationship('Employee', backref='role',
-                                lazy='dynamic')
-
-    def __repr__(self):
-        return '<Role: {}>'.format(self.name)
+        return '<Investimento: {}>'.format(self.tipo_invest)
