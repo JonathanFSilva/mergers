@@ -72,22 +72,6 @@ Ative este ambiente virtual, assim poderás instalar todas as dependências sem 
 $ . venv/bin/activte
 ```
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Construído com
 
 * [Flask](http://www.http://flask.pocoo.org/) -Framework utilizado
@@ -101,13 +85,3 @@ Leia o [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec42
 * **Wadson Garbes** - *Initial work* - [Wadson Garbes](https://wadsongarbes.pythonanywhere.com)
 
 See also the list of [contributors](https://github.com/mergers/contributors) who participated in this project.
-
-## Licence
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Agradecimentos
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
