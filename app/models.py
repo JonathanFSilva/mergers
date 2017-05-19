@@ -63,7 +63,7 @@ class Investimento(db.Model):
     tipo_invest = db.Column(db.String(60), unique=True)
     val_invest = db.Column(db.Float(7))
     data_invest = db.Column(db.DateTime)
-    investimento = db.relationship('Investimento', backref='investimento', lazy='dynamic')
+    investimento = db.relationship('Empresa', backref='investimento', lazy='dynamic')
 
     def __repr__(self):
         return '<Investimento: {}>'.format(self.tipo_invest)
