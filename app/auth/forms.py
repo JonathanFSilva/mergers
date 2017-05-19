@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo
 
-from ..models import Employee
+from ..models import Empresa
 
 class RegistrationForm(FlaskForm):
     """
@@ -13,8 +13,8 @@ class RegistrationForm(FlaskForm):
     """
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Usuário', validators=[DataRequired()])
-    first_name = StringField('Empresa', validators=[DataRequired()])
-    last_name = StringField('Sigla da empresa', validators=[DataRequired()])
+    razao_social = StringField('Empresa', validators=[DataRequired()])
+    cnpj = StringField('cnpj', validators=[DataRequired()])
     password = PasswordField('Senha', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')
@@ -23,11 +23,11 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Cadastrar')
 
     def validate_email(self, field):
-        if Employee.query.filter_by(email=field.data).first():
+        if Empresa.query.filter_by(email=field.data).first():
             raise ValidationError('Este email já está em uso!')
 
     def validate_username(self, field):
-        if Employee.query.filter_by(username=field.data).first():
+        if Empresa.query.filter_by(username=field.data).first():
             raise ValidationError('Este nome de usuário já está em uso!')
 
 class LoginForm(FlaskForm):
