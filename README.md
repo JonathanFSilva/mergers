@@ -66,12 +66,36 @@ Entre na pasta recém clonada e crie um ambiente virtual (virtualenv)
 $ cd mergers && virtualenv venv
 ```
 
-Ative este ambiente virtual, assim poderás instalar todas as dependências sem afetar a máquina local
+Ative este ambiente virtual, assim será posível instalar todas as dependências do projeto sem afetar a máquina local
 
 ```
 $ . venv/bin/activte
 ```
 
+Instale as dependências do projeto no ambiente virtual
+
+```
+(venv) $ pip install -r requirements.txt
+```
+
+Exporte as duas variáveis necessárias para o flask
+
+```
+(venv) $ export FLASK_APP=run.py && export FLASK_CONFIG=development
+```
+
+Rode o servidor
+
+```
+(venv) $ flask run
+```
+
+Acesse o link disponibilizado pelo servidor (http://127.0.0.1:5000) em seu navegador de preferência
+
+## Chega!
+
+No shell onde o servidor está rodando, tecle `ctrl + c` e desative o ambiente virtual com `(venv) $ deactivate`
+
 ## Construído com
 
-* [Flask](http://www.http://flask.pocoo.org/) -Framework utilizado
+* [Flask](http://www.http://flask.pocoo.org/) - Framework utilizado
