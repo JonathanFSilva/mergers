@@ -75,13 +75,3 @@ $ . venv/bin/activte
 ## Construído com
 
 * [Flask](http://www.http://flask.pocoo.org/) -Framework utilizado
-
-## Contribuições
-
-Leia o [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. 
-
-## Autores
-
-* **Wadson Garbes** - *Initial work* - [Wadson Garbes](https://wadsongarbes.pythonanywhere.com)
-
-See also the list of [contributors](https://github.com/mergers/contributors) who participated in this project.
