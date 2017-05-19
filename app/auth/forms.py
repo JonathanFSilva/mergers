@@ -14,7 +14,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Usuário', validators=[DataRequired()])
     razao_social = StringField('Empresa', validators=[DataRequired()])
-    cnpj = StringField('cnpj', validators=[DataRequired()])
+    cnpj = StringField('CNPJ', validators=[DataRequired()])
     password = PasswordField('Senha', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')
