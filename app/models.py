@@ -21,6 +21,7 @@ class Empresa(UserMixin, db.Model):
     razao_social = db.Column(db.String(60), index=True, unique=True)
     cnpj = db.Column(db.String(18), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    invest_id = db.Column(db.string(60), index=True)
     is_admin = db.Column(db.Boolean, default=False)
 
     @property
@@ -59,7 +60,7 @@ class Investimento(db.Model):
     __tablename__ = 'investimentos'
 
     id = db.Column(db.Integer, primary_key=True)
-    id_empresa = db.Column(db.Integer, db.ForeignKey('empresa.id'))
+    empresa_id = db.Column(db.Integer, db.ForeignKey('empresas.id'))
     tipo_invest = db.Column(db.String(60), unique=True)
     val_invest = db.Column(db.Float(7))
     data_invest = db.Column(db.DateTime)
