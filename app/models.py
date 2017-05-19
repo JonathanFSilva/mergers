@@ -21,7 +21,7 @@ class Empresa(UserMixin, db.Model):
     razao_social = db.Column(db.String(60), index=True, unique=True)
     cnpj = db.Column(db.String(18), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    invest_id = db.Column(db.string(60), index=True)
+    invest_id = db.Column(db.String(60), index=True)
     is_admin = db.Column(db.Boolean, default=False)
 
     @property
