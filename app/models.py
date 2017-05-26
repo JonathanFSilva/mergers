@@ -22,6 +22,8 @@ class Empresa(UserMixin, db.Model):
     cnpj = db.Column(db.String(18), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean, default=False)
+    investimento_id = db.Column(db.Integer, db.ForeignKey('investimentos.id'))
+
 
     @property
     def password(self):
