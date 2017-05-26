@@ -14,6 +14,9 @@ Shell Linux
 Python2.7
 ```
 ```
+mysql
+```
+```
 pip
 ```
 ```
@@ -37,13 +40,19 @@ A resposta deve ser:
 Python 2.7.x
 ```
 
-Daí então podemos começar a instalar as dependências!
+É necessário possui mysql-client e mysql-server para usar o banco de dados da aplicação, portanto, instale se for necessário com:
+
+```
+$ sudo apt install mysql-client mysql-server -y
+```
+
+Daí então podemos começar a instalar as dependências para rodar a aplicação:
 
 ```
 $ sudo apt install pip
 ```
 
-Pip é o instalador de pacotes do python, necessário para instalação das dependências da aplicação
+pip é o instalador de pacotes do python, necessário para instalação das dependências da aplicação
 
 ```
 $ sudo apt install virtualenvwrapper
