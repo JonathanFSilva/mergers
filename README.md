@@ -66,6 +66,36 @@ $ git clone https://github.com/wadsongarbes/mergers
 
 Por fim, baixa a aplicação e a armazena no repositório de mesmo nome (mergers)
 
+### Criando o banco de dados
+
+É necessário criar um banco de dados para a aplicação. Usando o shell do mysql, digite os seguintes comandos:
+
+```
+$ mysql -u root
+```
+
+caso o comando acima não funcione, tente:
+
+```
+$ mysql -u root -p
+```
+
+Isso garante acesso ao shell do mysql. Após tal, crie o banco de dados:
+
+```
+mysql> CREATE USER 'mer_admin'@'localhost' IDENTIFIED BY 'mer2017';
+Query OK, 0 rows affected (0.00 sec)
+```
+```
+mysql> CREATE DATABASE mergers_db;
+Query OK, 1 row affected (0.00 sec)
+```
+```
+mysql> GRANT ALL PRIVILEGES ON mergers_db . * TO 'mer_admin'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+```
+
+Pronto! Agora é só cruzar os dedos e rodar!
 
 ## Rodando a aplicação
 
