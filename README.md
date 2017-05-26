@@ -160,3 +160,9 @@ No shell onde o servidor está rodando, tecle `ctrl + c` e desative o ambiente v
 ## Construído com
 
 * [Flask](http://www.http://flask.pocoo.org/) - Framework utilizado
+
+## Dúvidas ?
+
+Pergunte qualquer coisa na seção "Issue". Em caso de erros, poste o motivo e o log para uma melhor resposta!
+
+* [Dúvidas](https://github.com/WadsonGarbes/mergers/issues)
