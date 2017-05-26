@@ -40,10 +40,10 @@ A resposta deve ser:
 Python 2.7.x
 ```
 
-É necessário possui mysql-client e mysql-server para usar o banco de dados da aplicação, portanto, instale se for necessário com:
+Instale o MySQL e suas dependências para desenvolvimento:
 
 ```
-$ sudo apt install mysql-client mysql-server -y
+$ sudo apt install mysql-client mysql-server libmysqlclient-dev -y
 ```
 
 Daí então podemos começar a instalar as dependências para rodar a aplicação:
