@@ -117,6 +117,12 @@ Rode o servidor
 
 Acesse o link disponibilizado pelo servidor (http://127.0.0.1:5000) em seu navegador de preferência
 
+Caso o comando acima não funcione, tente, no diretório mergers:
+
+```
+(venv) $ python run.py
+```
+
 ## Chega!
 
 No shell onde o servidor está rodando, tecle `ctrl + c` e desative o ambiente virtual com `(venv) $ deactivate`
