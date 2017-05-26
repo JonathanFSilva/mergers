@@ -61,7 +61,6 @@ class Investimento(db.Model):
     __tablename__ = 'investimentos'
 
     id = db.Column(db.Integer, primary_key=True)
-    empresa_id = db.Column(db.Integer, db.ForeignKey('empresas.id'))
     tipo_invest = db.Column(db.String(60), unique=True)
     val_invest = db.Column(db.Float(7))
     data_invest = db.Column(db.DateTime)
