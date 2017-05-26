@@ -74,7 +74,7 @@ Por fim, baixa a aplicação e a armazena no repositório de mesmo nome (mergers
 $ mysql -u root
 ```
 
-caso o comando acima não funcione, tente:
+caso seu banco de dados possua senha, tente:
 
 ```
 $ mysql -u root -p
