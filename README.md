@@ -153,9 +153,11 @@ Caso o comando acima não funcione, tente, no diretório mergers:
 (venv) $ python run.py
 ```
 
-## Chega!
+## Cansei!
 
-No shell onde o servidor está rodando, tecle `ctrl + c` e desative o ambiente virtual com `(venv) $ deactivate`
+No shell onde o servidor está rodando, tecle `ctrl + c` e desative o ambiente virtual com
+
+`(venv) $ deactivate`
 
 ## Construído com
 
