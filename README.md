@@ -84,6 +84,22 @@ Exporte as duas variáveis necessárias para o flask
 (venv) $ export FLASK_APP=run.py && export FLASK_CONFIG=development
 ```
 
+Crie o banco de dados (é necessário exportar as variáveis primeiro!)
+
+```
+(venv) $ flask db init
+```
+
+
+```
+(venv) $ flask db migrate
+```
+
+
+```
+(venv) $ flask db upgrade
+```
+
 Rode o servidor
 
 ```
