@@ -7,6 +7,7 @@
     <meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
@@ -25,9 +26,23 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-          <li><a href="{{ url_for('auth.cadastrar') }}">Cadastrar</a></li>
-          <li><a href="{{ url_for('auth.login') }}">Entrar</a></li>
+          {% if current_user.is_authenticated %}
+            {% if current_user.is_admin %}
+              <li><a href="{{ url_for('home.admin_dashboard') }}">Painel</a></li>
+              <li><a href="#">Árvore</a></li>
+              <li><a href="#">Empresas</a></li>
+              <li><a href="#">Participações</a></li>
+            {% else %}
+              <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
+              <li><a href="#">Árvore</a></li>
+            {% endif %} 
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            <li><a><i class="fa fa-user"></i> Olá, {{ current_user.username }}!</a></li>
+          {% else %}
+            <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('auth.cadastrar') }}">Cadastrar</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Entrar</a></li>
+          {% endif %} 
           </ul>
       </div>
     </div>
@@ -42,11 +57,30 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="list-inline">
+                      {% if current_user.is_authenticated %}
+                        {% if current_user.is_admin %}
+                          <li><a href="{{ url_for('home.admin_dashboard') }}">Painel</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                          <li><a href="#">Árvore</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                          <li><a href="#">Empresas</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                          <li><a href="#">Participações</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                        {% else %}
+                          <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                          <li><a href="#">Árvore</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                        {% endif %} 
+                        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                      {% else %}
                         <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
                         <li class="footer-menu-divider">⋅</li>
                         <li><a href="{{ url_for('auth.cadastrar') }}">Cadastrar</a></li>
                         <li class="footer-menu-divider">⋅</li>
                         <li><a href="{{ url_for('auth.login') }}">Entrar</a></li>
+                      {% endif %} 
                     </ul>
                     <p class="copyright text-muted small">Copyright &#169; Estrutura Societária - IHC 2017 </p>
                 </div>
