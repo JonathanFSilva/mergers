@@ -30,3 +30,66 @@ def listar_investimentos():
     
     return render_template('admin/investimentos/investimentos.html',
                             investimentos=investimentos, title="Investimentos")
+
+@admin.route('/investimentos/incluir', methods=['GET', 'POST'])
+@login_required
+def incluir_invest():
+    """
+    adiciona um investimento ao banco de dados
+    """
+    
+    check_admin()
+    
+    # esta mesma variável será utilizada nos templates!
+    add_invest = True 
+    
+    form = InvestimentoForm()
+    if form.validate_on_submit():
+        investimento = Investimento(tipo_invest=form.tipo_invest.data,
+                                    val_invest=form.val_invest.data,
+                                    data_invest=form.data_invest.data)
+                                    
+        try:
+            # adiciona investimento ao banco de dados
+            db.session.add(investimento)
+            db.session.commit()
+            flash('Investimento incluído com sucesso!')
+            
+        except:
+            # caso o nome do investimento já exista
+            flash('Erro: Este investimento já existe!')
+            
+        # redireciona usuário para a página de investimentos
+        return redirect(url_for('admin.listar_investimentos'))
+        
+    # carrega o template do investimento
+    return render_template('/admin/investimentos/investimento.html', action="Incluir",
+                            add_invest=add_invest, form=form, title="Incluir investimento")
+    
+@admin.route('/investimentos/editar/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_invest():
+    """
+    Edita um investimento
+    """
+    check_admin()
+    
+    add_invest = False
+    
+    investimento = Investimento.Query.get_or_404(id)
+    form = InvestimentoForm(obj=investimento)
+    if form.validate_on_submit():
+        investimento.tipo_invest = form.tipo_invest.data
+        investimento.val_invest = form.val_invest.data
+        db.session.commit()
+        flash('Investimento editado com sucesso!')
+        
+        # redireciona para a página de investimentos
+        return redirect(url_for('admin.listar_investimentos'))
+        
+    form.tipo_invest.data = investimento.tipo_investimento
+    form.val_invest.data = investimento.val_invest
+    return render_template('/admin/investimentos/investimento.html', action="Editar",
+                            add_invest=add_invest, form=form, investimento=investimento,
+                            title="Editar investimento")
+                            
