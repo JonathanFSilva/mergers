@@ -19,7 +19,7 @@ def check_admin():
         
 @admin.route('/investimentos', methods=['GET', 'POST'])
 @login_required
-def listar_investimentos():
+def listar_invest():
     """
     lista todos os investimentos
     """
@@ -60,7 +60,7 @@ def incluir_invest():
             flash('Erro: Este investimento já existe!')
             
         # redireciona usuário para a página de investimentos
-        return redirect(url_for('admin.listar_investimentos'))
+        return redirect(url_for('admin.listar_invest'))
         
     # carrega o template do investimento
     return render_template('/admin/investimentos/investimento.html', action="Incluir",
@@ -85,7 +85,7 @@ def edit_invest():
         flash('Investimento editado com sucesso!')
         
         # redireciona para a página de investimentos
-        return redirect(url_for('admin.listar_investimentos'))
+        return redirect(url_for('admin.listar_invest'))
         
     form.tipo_invest.data = investimento.tipo_investimento
     form.val_invest.data = investimento.val_invest
@@ -93,3 +93,20 @@ def edit_invest():
                             add_invest=add_invest, form=form, investimento=investimento,
                             title="Editar investimento")
                             
+@admin.route('/investimentos/deletar/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete_invest(id):
+    """
+    deleta um investimento do banco de dados
+    """
+    check_admin()
+    
+    investimento = Investimento.query.get_or_404(id)
+    db.session.delete(investimento)
+    db.session.commit()
+    flash('Investimento deletado com sucesso!')
+    
+    # redireciona para a página dos investimentos
+    return redirect(url_for('admin.listar_invest'))
+    
+    return render_template(title="Deletar Departamento")
