@@ -3,7 +3,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}
-    {% if incluir_invest %}
+    {% if add_invest %}
         Incluir investimento
     {% else %}
         Editar investimento
@@ -15,7 +15,7 @@
     <div class="middle">
       <div class="inner">
         <div class="center">
-            {% if incluir_invest %}
+            {% if add_invest %}
                 <h1>Incluir investimento</h1>
             {% else %}
                 <h1>Editar investimento</h1>
