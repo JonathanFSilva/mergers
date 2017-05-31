@@ -1,0 +1,71 @@
+<!-- app/templtes/admin/investimentos/investimentos.html -->
+
+{% import "bootstrap/utils.html" %}
+{% extends "base.html" %}
+{% block title %}Investimentos{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Investimentos</h1>
+        {% if investimentos %}
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="15%"> Tipo de investimento </th>
+                  <th width="40%"> valor do investimento </th>
+                  <th width="15%"> Quantidade de empresas </th>
+                  <th width="15%"> Editar </th>
+                  <th width="15%"> Deletar </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for investimento in investimentos %}
+                <tr>
+                  <td> {{ investimento.tipo_invest }} </td>
+                  <td> {{ investimento.val_invest }} </td>
+                  <td> {{ investimento.data_invest }} </td>
+                  <td>
+                    {% if investimento.investimentos %}
+                      {{ investimento.investimentos.count() }}
+                    {% else %}
+                      0
+                    {% endif %}
+                  </td>
+                  <td>
+                    <a href="{{ url_for('admin.edit_invest', id=investimento.id) }}">
+                      <i class="fa fa-pencil"></i> Editar
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ url_for('admin.delete_invest', id=investimento.id) }}">
+                      <i class="fa fa-trash"></i> Deletar 
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center">
+        {% else %}
+          <div style="text-align: center">
+            <h3> Nenhum investimento foi incluído. </h3>
+            <hr class="intro-divider">
+        {% endif %}
+          <a href="{{ url_for('admin.incluir_invest') }}" class="btn btn-default btn-lg">
+            <i class="fa fa-plus"></i>
+            Incluir investimento
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
