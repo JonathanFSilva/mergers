@@ -1,0 +1,30 @@
+<!-- app/templates/admin/investimentos/investimento.html -->
+
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+    {% if incluir_invest %}
+        Incluir investimento
+    {% else %}
+        Editar investimento
+    {% endif %}
+{% endblock %}
+{% block body %}
+<div class="content-section">
+ <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div class="center">
+            {% if incluir_invest %}
+                <h1>Incluir investimento</h1>
+            {% else %}
+                <h1>Editar investimento</h1>
+            {% endif %}
+            <br/>
+            {{ wtf.quick_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
