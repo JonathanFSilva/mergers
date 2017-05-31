@@ -108,5 +108,3 @@ def delete_invest(id):
     
     # redireciona para a página dos investimentos
     return redirect(url_for('admin.listar_invest'))
-    
-    return render_template(title="Deletar Departamento")
