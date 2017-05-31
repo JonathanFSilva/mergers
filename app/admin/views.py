@@ -68,7 +68,7 @@ def incluir_invest():
     
 @admin.route('/investimentos/editar/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit_invest():
+def edit_invest(id):
     """
     Edita um investimento
     """
@@ -76,18 +76,19 @@ def edit_invest():
     
     add_invest = False
     
-    investimento = Investimento.Query.get_or_404(id)
+    investimento = Investimento.query.get_or_404(id)
     form = InvestimentoForm(obj=investimento)
     if form.validate_on_submit():
         investimento.tipo_invest = form.tipo_invest.data
         investimento.val_invest = form.val_invest.data
+        investimento.data_invest = form.data_invest.data
         db.session.commit()
         flash('Investimento editado com sucesso!')
         
         # redireciona para a página de investimentos
         return redirect(url_for('admin.listar_invest'))
         
-    form.tipo_invest.data = investimento.tipo_investimento
+    form.tipo_invest.data = investimento.tipo_invest
     form.val_invest.data = investimento.val_invest
     return render_template('/admin/investimentos/investimento.html', action="Editar",
                             add_invest=add_invest, form=form, investimento=investimento,
