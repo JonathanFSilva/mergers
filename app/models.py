@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # app/models.py
 
 from flask_login import UserMixin
@@ -22,8 +23,6 @@ class Empresa(UserMixin, db.Model):
     cnpj = db.Column(db.String(18), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean, default=False)
-    investimento_id = db.Column(db.Integer, db.ForeignKey('investimentos.id'))
-
 
     @property
     def password(self):
@@ -61,9 +60,10 @@ class Investimento(db.Model):
     __tablename__ = 'investimentos'
 
     id = db.Column(db.Integer, primary_key=True)
+    id_pai = db.Column(db.Integer)
+    id_filho = db.Column(db.Integer)
     tipo_invest = db.Column(db.String(60), unique=True)
-    val_invest = db.Column(db.Float(7))
-    data_invest = db.Column(db.DateTime)
+    data_invest = db.Column(db.String(15))
     empresas = db.relationship('Empresa', backref='investimento', lazy='dynamic')
 
     def __repr__(self):
