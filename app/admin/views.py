@@ -9,6 +9,7 @@ from . import admin
 from forms import InvestimentoForm
 from .. import db
 from ..models import Investimento
+from ..models import Empresa
 
 def check_admin():
     """
@@ -46,9 +47,9 @@ def incluir_invest():
     form = InvestimentoForm()
     if form.validate_on_submit():
         investimento = Investimento(tipo_invest=form.tipo_invest.data,
-                                    val_invest=form.val_invest.data,
-                                    data_invest=form.data_invest.data)
-                                    
+                                    data_invest=form.data_invest.data,
+                                    )
+
         try:
             # adiciona investimento ao banco de dados
             db.session.add(investimento)
@@ -80,7 +81,6 @@ def edit_invest(id):
     form = InvestimentoForm(obj=investimento)
     if form.validate_on_submit():
         investimento.tipo_invest = form.tipo_invest.data
-        investimento.val_invest = form.val_invest.data
         investimento.data_invest = form.data_invest.data
         db.session.commit()
         flash('Investimento editado com sucesso!')
@@ -89,7 +89,6 @@ def edit_invest(id):
         return redirect(url_for('admin.listar_invest'))
         
     form.tipo_invest.data = investimento.tipo_invest
-    form.val_invest.data = investimento.val_invest
     return render_template('/admin/investimentos/investimento.html', action="Editar",
                             add_invest=add_invest, form=form, investimento=investimento,
                             title="Editar investimento")
