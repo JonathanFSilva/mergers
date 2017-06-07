@@ -19,7 +19,6 @@
               <thead>
                 <tr>
                   <th width="15%"> Tipo de investimento </th>
-                  <th width="40%"> Valor do investimento </th>
                   <th width="40%"> Data do investimento </th>
                   <th width="15%"> Quantidade de empresas </th>
                   <th width="15%"> Editar </th>
@@ -30,7 +29,6 @@
               {% for investimento in investimentos %}
                 <tr>
                   <td> {{ investimento.tipo_invest }} </td>
-                  <td> {{ investimento.val_invest }} </td>
                   <td> {{ investimento.data_invest }} </td>
                   <td>
                     {% if investimento.investimentos %}
