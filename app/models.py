@@ -61,8 +61,8 @@ class Investimento(db.Model):
     __tablename__ = 'investimentos'
 
     id = db.Column(db.Integer, primary_key=True)
-    id_pai = db.Column(db.Integer)
-    id_filho = db.Column(db.Integer)
+    empresa_pai = db.Column(db.String(60))
+    empresa_filha = db.Column(db.String(60))
     tipo_invest = db.Column(db.String(60), unique=True)
     data_invest = db.Column(db.String(15))
     empresa_investida = db.relationship('Empresa', backref='investimento', lazy='dynamic')
