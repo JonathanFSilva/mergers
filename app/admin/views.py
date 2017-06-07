@@ -108,3 +108,17 @@ def delete_invest(id):
     
     # redireciona para a página dos investimentos
     return redirect(url_for('admin.listar_invest'))
+    
+@admin.route('/empresas')
+@login_required
+def listar_empresas():
+    """
+    Lista todas as empresas
+    """
+    
+    check_admin()
+    
+    empresas = Empresas.query.all()
+    
+    return render_template('admin/empresas/empresas.html',
+                            empresas=empresas, title='Empresas')
