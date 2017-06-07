@@ -15,6 +15,8 @@ class InvestimentoForm(FlaskForm):
     '''
     tipo_invest = StringField('Tipo de investimento', validators=[DataRequired()])
     data_invest = StringField('Data e horário', validators=[DataRequired()], render_kw={"type": "date"})
+    empresa_investidora = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=False),
+                                    get_label='razao_social')
     # SELECT razao_social FROM empresa WHERE is_admin = 0
     empresa_investida = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=False),
                                     get_label='razao_social')
