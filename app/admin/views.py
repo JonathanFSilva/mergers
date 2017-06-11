@@ -46,8 +46,18 @@ def incluir_invest():
     
     form = InvestimentoForm()
     if form.validate_on_submit():
+        # corta apenas o nome da empresa pai
+        pai = form.empresa_pai.data
+        pai = str(pai)
+        pai = pai[9:len(pai) - 1]
+        # corta apenas o nome da empresa filha
+        filha = form.empresa_filha.data
+        filha = str(filha)
+        filha = filha[9:len(filha) - 1]
         investimento = Investimento(tipo_invest=form.tipo_invest.data,
                                     data_invest=form.data_invest.data,
+                                    empresa_pai=pai,
+                                    empresa_filha=filha
                                     )
 
         try:
@@ -82,6 +92,16 @@ def edit_invest(id):
     if form.validate_on_submit():
         investimento.tipo_invest = form.tipo_invest.data
         investimento.data_invest = form.data_invest.data
+        # corta apenas o nome da empresa pai
+        pai = form.empresa_pai.data
+        pai = str(pai)
+        pai = pai[9:len(pai) - 1]
+        investimento.empresa_pai = pai
+        # corta apenas o nome da empresa filha
+        filha = form.empresa_filha.data
+        filha = str(filha)
+        filha = filha[9:len(filha) - 1]
+        investimento.empresa_filha = filha
         db.session.commit()
         flash('Investimento editado com sucesso!')
         
