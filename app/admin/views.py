@@ -153,7 +153,7 @@ def listar_empresas():
     
     check_admin()
     
-    empresas = Empresas.query.all()
+    empresas = Empresa.query.all()
     
     return render_template('admin/empresas/empresas.html',
                             empresas=empresas, title='Empresas')
