@@ -50,10 +50,17 @@ def incluir_invest():
         pai = form.empresa_pai.data
         pai = str(pai)
         pai = pai[9:len(pai) - 1]
+        
         # corta apenas o nome da empresa filha
         filha = form.empresa_filha.data
         filha = str(filha)
         filha = filha[9:len(filha) - 1]
+        
+        if pai == filha:
+            flash('Erro: Uma empresa não pode investir em si mesma!')
+            # não inclui investimento e retorna
+            return redirect(url_for('admin.listar_invest'))
+        
         investimento = Investimento(tipo_invest=form.tipo_invest.data,
                                     data_invest=form.data_invest.data,
                                     empresa_pai=pai,
@@ -90,18 +97,26 @@ def edit_invest(id):
     investimento = Investimento.query.get_or_404(id)
     form = InvestimentoForm(obj=investimento)
     if form.validate_on_submit():
-        investimento.tipo_invest = form.tipo_invest.data
-        investimento.data_invest = form.data_invest.data
+
         # corta apenas o nome da empresa pai
         pai = form.empresa_pai.data
         pai = str(pai)
         pai = pai[9:len(pai) - 1]
-        investimento.empresa_pai = pai
+        
         # corta apenas o nome da empresa filha
         filha = form.empresa_filha.data
         filha = str(filha)
         filha = filha[9:len(filha) - 1]
+        
+        if pai == filha:
+            flash('Erro: Uma empresa não pode investir em si mesma!')
+            # não inclui investimento e retorna
+            return redirect(url_for('admin.listar_invest'))
+        
+        investimento.tipo_invest = form.tipo_invest.data
+        investimento.data_invest = form.data_invest.data
         investimento.empresa_filha = filha
+        investimento.empresa_pai = pai
         db.session.commit()
         flash('Investimento editado com sucesso!')
         
