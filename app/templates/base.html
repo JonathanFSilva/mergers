@@ -30,7 +30,7 @@
             {% if current_user.is_admin %}
               <li><a href="{{ url_for('home.admin_dashboard') }}">Painel</a></li>
               <li><a href="#">Árvore</a></li>
-              <li><a href="#">Empresas</a></li>
+              <li><a href="{{ url_for('admin.listar_empresas') }}">Empresas</a></li>
               <li><a href="{{ url_for('admin.listar_invest') }}">Participações</a></li>
             {% else %}
               <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
