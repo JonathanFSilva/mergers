@@ -19,8 +19,10 @@
               <thead>
                 <tr>
                   <th width="44%" style="text-align: center"> Tipo de investimento </th>
-                  <th width="15%" style="text-align: center"> Data </th>
-                  <th width="15%" style="text-align: center"> Qtd </th>
+                  <th width="18%" style="text-align: center"> Data </th>
+                  <th width="15%" style="text-align: center"> Empresa Investidora </th>
+                  <th width="15%" style="text-align: center"> Empresa Investida </th>
+                  <th width="12%" style="text-align: center"> Qtd </th>
                   <th width="12%" style="text-align: center"> Editar </th>
                   <th width="14%" style="text-align: center"> Deletar </th>
                 </tr>
@@ -30,6 +32,8 @@
                 <tr>
                   <td> {{ investimento.tipo_invest }} </td>
                   <td> {{ investimento.data_invest }} </td>
+                  <td> {{ investimento.empresa_pai }} </td>
+                  <td> {{ investimento.empresa_filha }} </td>
                   <td>
                     {% if investimento.investimentos %}
                       {{ investimento.investimentos.count() }}
