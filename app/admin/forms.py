@@ -8,6 +8,11 @@ from wtforms.validators import DataRequired
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 
 from ..models import Empresa
+import time
+from datetime import date, datetime, time
+
+# pega a data de hoje
+hoje = date.today()
 
 class InvestimentoForm(FlaskForm):
     '''
@@ -17,11 +22,16 @@ class InvestimentoForm(FlaskForm):
                     choices=[('Participação Societária', 'Participação Societária'), 
                              ('Investimento em Sociedade anônima', 'Investimento em Sociedade anônima')
                             ])
-    data_invest = StringField('Data e horário', validators=[DataRequired()], render_kw={"type": "date"})
-    empresa_investidora = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=False),
+    data_invest = StringField('Data e horário',
+                             validators=[DataRequired()], 
+                             default=hoje, 
+                             render_kw={"type": "date"}
+                             )
+    empresa_pai = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=0),
                                     get_label='razao_social')
+                                    
     # SELECT razao_social FROM empresa WHERE is_admin = 0
-    empresa_investida = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=False),
+    empresa_filha = QuerySelectField(query_factory=lambda: Empresa.query.filter_by(is_admin=0),
                                     get_label='razao_social')
     submit = SubmitField('Enviar')
     
