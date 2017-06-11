@@ -28,8 +28,6 @@
                     <tr style="background-color: #aec251; color: white;">
                         <td> <i class="fa fa-key"></i> Admin </td>
                         <td> N/A </td>
-                        <td> N/A </td>
-                        <td> N/A </td>
                     </tr>
                 {% else %}
                     <tr>
@@ -41,7 +39,7 @@
                           --
                         -->
                         {% if empresa.investidora %}   
-                          {{ emrpesa.investidora.razao_social }}
+                          {{ empresa.investidora.razao_social }}
                         {% else %}
                           -
                         {% endif %}
