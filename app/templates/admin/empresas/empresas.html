@@ -18,7 +18,7 @@
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th width="15%"> Razão Social </th>
+                  <th width="30%"> Razão Social </th>
                   <th width="30%"> CNPJ </th>
                 </tr>
               </thead>
@@ -32,18 +32,21 @@
                 {% else %}
                     <tr>
                       <td> {{ empresa.razao_social }} </td>
+                      <td> {{ empresa.cnpj }} </td>
+                      <!--
                       <td>
                         <!-- 
                           -- empresa.investidora deve existir em admin/views como ocorrência de investimento 
                           -- (QuerySelectField retorna apenas a query, lembra ??)
                           --
-                        -->
-                        {% if empresa.investidora %}   
-                          {{ empresa.investidora.razao_social }}
+                        
+                        {% if empresa.investimento_id %}   
+                          {{ investimento.empresa_pai }}
                         {% else %}
                           -
                         {% endif %}
                       </td>
+                    -->
                     </tr>
                 {% endif %}
               {% endfor %}
