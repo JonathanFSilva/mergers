@@ -63,9 +63,9 @@
                           <li class="footer-menu-divider">⋅</li>
                           <li><a href="#">Árvore</a></li>
                           <li class="footer-menu-divider">⋅</li>
-                          <li><a href="#">Empresas</a></li>
+                          <li><a href="{{ url_for('admin.listar_empresas') }}">Empresas</a></li>
                           <li class="footer-menu-divider">⋅</li>
-                          <li><a href="#">Participações</a></li>
+                          <li><a href="{{ url_for('admin.listar_invest') }}">Participações</a></li>
                           <li class="footer-menu-divider">⋅</li>
                         {% else %}
                           <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
