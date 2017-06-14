@@ -11,31 +11,33 @@
         <br/>
         {{ utils.flashed_messages() }}
         <br/>
-        <!-- componente do TERCEIRO! -->
-        <h1>Pure CSS Tree</h1>
-        <p><strong>no javascript, just simple html and css - enjoy!</strong></p>
-        <ul class="tree">
-            <li><a>Parent 1</a></li>
-            <li><a>Parent 2</a></li>
-            <li>
-                <a>Parent 3</a>
-                <ul>
-                    <li>
-                        <a>1st Child of 3</a>
-                        <ul>
-                            <li><a>1st grandchild</a></li>
-                            <li><a>2nd grandchild</a></li>
-                        </ul>
-                    </li>
-                    <li><a>2nd Child of 3</a></li>
-                    <li><a>3rd Child of 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <a>Parent 4</a>
-                <ul><li><a>Parent 4's only child</a></li></ul>
-            </li>
-        </ul>
+        <h1 style="text-align:center;">Árvore Societária</h1>
+        <hr class="intro-divider">
+        <div class="center">
+            <!-- componente do TERCEIRO! -->
+            <ul class="tree">
+                <li><a>Wallbond System</a></li>
+                <li><a>Tree Business Corp</a></li>
+                <li>
+                    <a>Warner Studios</a>
+                    <ul>
+                        <li>
+                            <a>Warner Bros</a>
+                            <ul>
+                                <li><a>Warner Games</a></li>
+                                <li><a>Tt Games</a></li>
+                            </ul>
+                        </li>
+                        <li><a>Warner Productions</a></li>
+                        <li><a>Warner Lmtd.</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Home Box Office</a>
+                    <ul><li><a>Max HD</a></li></ul>
+                </li>
+            </ul>
+        </div>
       </div>
     </div>
   </div>
