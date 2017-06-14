@@ -1,0 +1,43 @@
+<!-- app/templates/admin/arvores/arvores.html -->
+
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Árvore Societária{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <!-- componente do TERCEIRO! -->
+        <h1>Pure CSS Tree</h1>
+        <p><strong>no javascript, just simple html and css - enjoy!</strong></p>
+        <ul class="tree">
+            <li><a>Parent 1</a></li>
+            <li><a>Parent 2</a></li>
+            <li>
+                <a>Parent 3</a>
+                <ul>
+                    <li>
+                        <a>1st Child of 3</a>
+                        <ul>
+                            <li><a>1st grandchild</a></li>
+                            <li><a>2nd grandchild</a></li>
+                        </ul>
+                    </li>
+                    <li><a>2nd Child of 3</a></li>
+                    <li><a>3rd Child of 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>Parent 4</a>
+                <ul><li><a>Parent 4's only child</a></li></ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
