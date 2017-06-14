@@ -157,3 +157,18 @@ def listar_empresas():
     
     return render_template('admin/empresas/empresas.html',
                             empresas=empresas, title='Empresas')
+                            
+@admin.route('/arvore')
+@login_required
+def arvores():
+    """
+    Mostra a árvore societária de todas as empresas cadastradas
+    no app
+    """
+    
+    check_admin()
+    
+    investimentos = Investimento.query.all()
+    
+    return render_template('admin/arvores/arvores.html',
+                            investimentos=investimentos, title='Árvore')
