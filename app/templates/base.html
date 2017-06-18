@@ -29,13 +29,12 @@
         <ul class="nav navbar-nav navbar-right">
           {% if current_user.is_authenticated %}
             {% if current_user.is_admin %}
-              <li><a href="{{ url_for('home.admin_dashboard') }}">Painel</a></li>
               <li><a href="{{ url_for('admin.arvores') }}">Árvore</a></li>
               <li><a href="{{ url_for('admin.listar_empresas') }}">Empresas</a></li>
               <li><a href="{{ url_for('admin.listar_invest') }}">Participações</a></li>
             {% else %}
-              <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
               <li><a href="#">Árvore</a></li>
+              <li><a href="#">Participações</a></li>
             {% endif %} 
             <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
             <li><a><i class="fa fa-user"></i> Olá, {{ current_user.username }}!</a></li>
@@ -60,8 +59,6 @@
                     <ul class="list-inline">
                       {% if current_user.is_authenticated %}
                         {% if current_user.is_admin %}
-                          <li><a href="{{ url_for('home.admin_dashboard') }}">Painel</a></li>
-                          <li class="footer-menu-divider">⋅</li>
                           <li><a href="{{ url_for('admin.arvores') }}">Árvore</a></li>
                           <li class="footer-menu-divider">⋅</li>
                           <li><a href="{{ url_for('admin.listar_empresas') }}">Empresas</a></li>
@@ -69,9 +66,9 @@
                           <li><a href="{{ url_for('admin.listar_invest') }}">Participações</a></li>
                           <li class="footer-menu-divider">⋅</li>
                         {% else %}
-                          <li><a href="{{ url_for('home.dashboard') }}">Painel</a></li>
-                          <li class="footer-menu-divider">⋅</li>
                           <li><a href="#">Árvore</a></li>
+                          <li class="footer-menu-divider">⋅</li>
+                          <li><a href="#">Participações</a></li>
                           <li class="footer-menu-divider">⋅</li>
                         {% endif %} 
                         <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
