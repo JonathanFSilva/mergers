@@ -118,7 +118,7 @@ def edit_invest(id):
         investimento.empresa_filha = filha
         investimento.empresa_pai = pai
         db.session.commit()
-        flash('Investimento editado com sucesso!')
+        flash('Participação editada com sucesso!')
         
         # redireciona para a página de investimentos
         return redirect(url_for('admin.listar_invest'))
@@ -126,7 +126,7 @@ def edit_invest(id):
     form.tipo_invest.data = investimento.tipo_invest
     return render_template('/admin/investimentos/investimento.html', action="Editar",
                             add_invest=add_invest, form=form, investimento=investimento,
-                            title="Editar investimento")
+                            title="Editar participação")
                             
 @admin.route('/investimentos/deletar/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -139,7 +139,7 @@ def delete_invest(id):
     investimento = Investimento.query.get_or_404(id)
     db.session.delete(investimento)
     db.session.commit()
-    flash('Investimento deletado com sucesso!')
+    flash('participação deletada com sucesso!')
     
     # redireciona para a página dos investimentos
     return redirect(url_for('admin.listar_invest'))
