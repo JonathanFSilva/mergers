@@ -26,13 +26,13 @@
               {% for empresa in empresas %}
                 {% if empresa.is_admin %}
                     <tr style="background-color: #aec251; color: white;">
-                        <td> <i class="fa fa-key"></i> Admin </td>
-                        <td> N/A </td>
+                        <td style="text-align: center"> <i class="fa fa-key"></i> Admin </td>
+                        <td style="text-align: center"> N/A </td>
                     </tr>
                 {% else %}
                     <tr>
-                      <td> {{ empresa.razao_social }} </td>
-                      <td> {{ empresa.cnpj }} </td>
+                      <td style="text-align: center"> {{ empresa.razao_social }} </td>
+                      <td style="text-align: center"> {{ empresa.cnpj }} </td>
                       <!--
                       <td>
                         <!-- 
