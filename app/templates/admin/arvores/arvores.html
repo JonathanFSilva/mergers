@@ -12,9 +12,30 @@
         {{ utils.flashed_messages() }}
         <br/>
         <h1 style="text-align:center;">Árvore Societária</h1>
+        {% if investimentos %}
         <hr class="intro-divider">
         <div class="center">
-            <!-- componente do TERCEIRO! -->
+            <ul class="tree">
+                {% for investimento in investimentos %}
+                    <li>
+                        <a>{{ investimento.empresa_pai }}</a>
+                        <ul>
+                            <li>
+                            <a>{{ investimento.empresa_filha }}</a>
+                            </li>
+                        </ul>
+                    </l>
+                {% endfor %}
+            </ul>
+        </div>
+        <div style="text-align: center">
+        {% else %}
+            <div style="text-align: center">
+                <h3> Nenhuma participação foi incluída! </h3>
+                <hr class="intro-divider">
+        {% endif %}
+            </div>
+            <!-- componente do TERCEIRO! 
             <ul class="tree">
                 <li><a>Wallbond System</a></li>
                 <li><a>Tree Business Corp</a></li>
@@ -37,7 +58,7 @@
                     <ul><li><a>Max HD</a></li></ul>
                 </li>
             </ul>
-        </div>
+            -->
       </div>
     </div>
   </div>
