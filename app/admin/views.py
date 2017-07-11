@@ -101,12 +101,12 @@ def edit_invest(id):
         # corta apenas o nome da empresa pai
         pai = form.empresa_pai.data
         pai = str(pai)
-        pai = pai[9:len(pai) - 1]
+        pai = pai[9:-1]
         
         # corta apenas o nome da empresa filha
         filha = form.empresa_filha.data
         filha = str(filha)
-        filha = filha[9:len(filha) - 1]
+        filha = filha[9:-1]
         
         if pai == filha:
             flash('Erro: Uma empresa não pode investir em si mesma!')
