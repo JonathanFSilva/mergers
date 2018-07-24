@@ -107,3 +107,44 @@ p.copyright {
   height: 100%;
   margin: 0 auto -4em;
 }
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 70%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 600px) {
+
+.footer{
+    padding: 35px;
+}
+
+.footer .footerh1{
+    font-size: 18px;
+}
+
+.footer .footerh4{
+    font-size: 12px;
+}
+
+.footer .footer-links{
+    font-size: 14px;
+    padding: 25px 0 20px;
+}
+
+.footer .footer-links a{
+    line-height: 1.8;
+}
+}

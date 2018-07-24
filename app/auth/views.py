@@ -55,8 +55,12 @@ def login():
             # log employee in
             login_user(empresa)
 
-            # redirect to the dashboard page after login
-            return redirect(url_for('home.dashboard'))
+            # redireciona cada um para sua devida página
+            if empresa.is_admin:
+                return redirect(url_for('home.admin_dashboard'))
+
+            else:
+                return redirect(url_for('home.dashboard'))
 
         # when login details are incorrect
         else:

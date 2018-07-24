@@ -1,0 +1,66 @@
+<!-- app/templtes/admin/investimentos/investimentos.html -->
+
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Participações{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Participações</h1>
+        {% if investimentos %}
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="center-table table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="25%" style="text-align: center"> Tipo de investimento </th>
+                  <th width="19%" style="text-align: center"> Data </th>
+                  <th width="15%" style="text-align: center"> Empresa Investidora </th>
+                  <th width="15%" style="text-align: center"> Empresa Investida </th>
+                  <th width="13%" style="text-align: center"> Editar </th>
+                  <th width="13%" style="text-align: center"> Deletar </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for investimento in investimentos %}
+                <tr>
+                  <td style="text-align: center"> {{ investimento.tipo_invest }} </td>
+                  <td style="text-align: center"> {{ investimento.data_invest }} </td>
+                  <td style="text-align: center"> {{ investimento.empresa_pai }} </td>
+                  <td style="text-align: center"> {{ investimento.empresa_filha }} </td>
+                  <td style="text-align: center">
+                    <a href="{{ url_for('admin.edit_invest', id=investimento.id) }}">
+                      <i class="fa fa-pencil"></i> Editar
+                    </a>
+                  </td>
+                  <td style="text-align: center">
+                    <a href="{{ url_for('admin.delete_invest', id=investimento.id) }}">
+                      <i class="fa fa-trash"></i> Deletar 
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center">
+        {% else %}
+          <div style="text-align: center">
+            <h3> Nenhuma participação foi incluída! </h3>
+            <hr class="intro-divider">
+        {% endif %}
+          <a href="{{ url_for('admin.incluir_invest') }}" class="btn btn-default btn-lg">
+            <i class="fa fa-plus"></i>
+            Incluir participação
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
