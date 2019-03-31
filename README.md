@@ -123,7 +123,12 @@ $ flask shell
 ```
 >>> admin = Empresa(email="admin@admin.com",username="Admin",password="admin",is_admin=True)
 ```
-
+```
+>>> db.session.add(admin)
+```
+```
+>>> db.session.commit()
+```
 ## Rodando a aplicação
 
 Entre na pasta recém clonada e crie um ambiente virtual (virtualenv)
