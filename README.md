@@ -20,7 +20,7 @@ mysql
 pip
 ```
 ```
-virtualenvwrapper
+virtualenv
 ```
 ```
 Este repositório
@@ -55,7 +55,7 @@ $ sudo apt install pip
 pip é o instalador de pacotes do python, necessário para instalação das dependências da aplicação
 
 ```
-$ sudo apt install virtualenvwrapper
+$ sudo apt install virtualenv
 ```
 
 Responsável por isolar nossa aplicação da máquina "hospedeira", garantido um controle maior sobre as dependências da aplicação
@@ -64,7 +64,17 @@ Responsável por isolar nossa aplicação da máquina "hospedeira", garantido um
 $ git clone https://github.com/wadsongarbes/mergers
 ```
 
-Por fim, baixa a aplicação e a armazena no repositório de mesmo nome (mergers)
+baixe a aplicação e a armazene-a no repositório de mesmo nome (mergers)
+
+```
+$ virtualenv venv && . venv/bin/activate
+```
+cria e ativa um ambiente virtual
+
+```
+$ pip install -r requirements.txt
+```
+baixa as dependências do projeto
 
 ### Criando o banco de dados
 
@@ -96,6 +106,23 @@ Query OK, 0 rows affected (0.00 sec)
 ```
 
 Pronto! Agora é só cruzar os dedos e rodar!
+
+## Criando o usuário administrador
+
+É necessário criar um usuário administrador para fazer as participações na aplicação. para isso, digite os seguintes comandos:
+
+```
+$ flask shell
+```
+```
+>>> from app.models import Empresa
+```
+```
+>>> from app import db
+```
+```
+>>> admin = Empresa(email="admin@admin.com",username="Admin",password="admin",is_admin=True)
+```
 
 ## Rodando a aplicação
 
